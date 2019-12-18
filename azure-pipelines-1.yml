@@ -1,17 +1,10 @@
 # Maven
-- task: Maven@3
+- task: CopyFiles@2
   inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean install'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Path'
-    mavenSetM2Home: false
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+    CleanTargetFolder: true
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
